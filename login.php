@@ -1,15 +1,24 @@
 <?php
 session_start();
 
-if( $username = $_POST['username'] && $password = $_POST['password'] == 1 ) {
+if( isset($_SESSION['username']) ) {
+    header("Location: dashboard.php");
+    exit;
+}
+
+if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+
     if( $username == 'admin' && $password == '123' ) {
         $_SESSION['username'] = $username;
-        header("Location: dasboard.php");
+        header("Location: dashboard.php");
         exit;
     }
     else {
         $error = "user & pass salah";
     }
+
 }
 
 ?>
