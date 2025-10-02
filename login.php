@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if( $username = $_POST['username'] && $password = $_POST['password'] == 1 ) {
+    if( $username == 'admin' && $password == '123' ) {
+        $_SESSION['username'] = $username;
+        header("Location: dasboard.php");
+        exit;
+    }
+    else {
+        $error = "user & pass salah";
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
